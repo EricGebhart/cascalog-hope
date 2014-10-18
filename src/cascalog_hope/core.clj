@@ -13,7 +13,7 @@
 
 ;; When using Cider in emacs, stdout goes to never never land.
 ;; this makes (stdout) work in the repl.
-(defn get-stdout-to-work-in-emacs []
+#_(defn get-stdout-to-work-in-emacs []
   (import 'org.apache.commons.io.output.WriterOutputStream)
   (import 'java.io.PrintStream)
 
