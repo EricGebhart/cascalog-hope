@@ -1,15 +1,15 @@
 (ns cascalog-hope.core
   (:use cascalog.api)
-  (:require [clojure-csv [core :as csv]])
-  (:require [clj-json [core :as json]])
-  (:require [cascalog.logic [ops :as c]]))
+  (:require [clojure-csv.core :as csv]
+            [clj-json.core :as json]
+            [cascalog.logic.ops :as c]))
 
 (defmacro bootstrap []
   '(do
     (use (quote cascalog.api))
-    (require (quote [clojure-csv [core :as csv]]))
-    (require (quote [clj-json [core :as json]]))
-    (require (quote [cascalog [ops :as c]]))))
+    (require (quote [clojure-csv.core :as csv]))
+    (require (quote [clj-json.core :as json]))
+    (require (quote [cascalog.logic.ops :as c]))))
 
 ;; When using Cider in emacs, stdout goes to never never land.
 ;; this makes (stdout) work in the repl.
