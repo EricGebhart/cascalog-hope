@@ -1,8 +1,8 @@
 (ns cascalog-hope.core
   (:use cascalog.api)
-  (:require [clojure-csv [core :as csv]])
-  (:require [clj-json [core :as json]])
-  (:require [cascalog.logic [ops :as c]]))
+  (:require [clojure-csv.core :as csv]
+            [clj-json.core :as json]
+            [cascalog.logic.ops :as c]))
 
 (defmacro bootstrap []
   '(do
