@@ -9,7 +9,7 @@
     (use (quote cascalog.api))
     (require (quote [clojure-csv [core :as csv]]))
     (require (quote [clj-json [core :as json]]))
-    (require (quote [cascalog [ops :as c]]))))
+    (require (quote [cascalog.logic [ops :as c]]))))
 
 ;; When using Cider in emacs, stdout goes to never never land.
 ;; this makes (stdout) work in the repl.
@@ -69,8 +69,17 @@
   "query that outputs all city and state pairs from cities dataset; repl usage: (city-state-query)"
   []
   (?<- (stdout) [?city ?state]
-    (cities ?line)
-    (cities-parser ?line :> ?city ?state)))
+       (cities ?line)
+       (cities-parser ?line :> ?city ?state)))
+
+;; with clojure 1.7 this query fails by returning the proper number of records, but all of them
+;; are the last record in the list.
+(defn city-state-query-fails
+  "query that outputs all city and state pairs from cities dataset; repl usage: (city-state-query)"
+  []
+  (??<- [?city ?state]
+        (cities ?line)
+        (cities-parser ?line :> ?city ?state)))
 
 (defn california-query
   "query that only outputs city and state pairs where state is 'CA'; repl usage: (california-query)"
